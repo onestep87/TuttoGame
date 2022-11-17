@@ -7,14 +7,17 @@ import java.util.ArrayList;
 public class Game {
     private ArrayList<Player> players=new ArrayList<>();
     protected int PlayerCount;
-    protected int GoalPoints;
+    public static int GoalPoints;
 
     boolean GameIsEnded;
     protected int CurrentPlayerIndex=0;
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
-        this.GoalPoints = GoalPoints;
+        GoalPoints = GoalPoints;
+        // create deck
+        // shuffel deck
+
         for (int i =0;i<PlayerCount;i++){
             players.add(new Player());
         }
@@ -26,7 +29,9 @@ public class Game {
                 UI.ShowVictoryScreen(players.get(CurrentPlayerIndex));
                 return;
             }
-           // Player.
+            // change deck
+            players.get(CurrentPlayerIndex).play(new CardDeck(), this);
+            // next player function
         }
     }
     public ArrayList<Player> getPlayers() {

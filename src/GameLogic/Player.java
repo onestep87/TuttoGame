@@ -1,23 +1,38 @@
 package GameLogic;
 
+import Abstract.Card;
+import DiceLogic.DiceLogic;
+import DiceLogic.Die;
 import UI.Input;
 
+import java.util.ArrayList;
+
 public class Player {
-    private int Score =0;
-    private Game game;
+    private int Score = 0;
     private String Name;
     public Player( ){
         Name = Input.GetPlayerName();
 
     }
-    public int play(){
+    public void play(CardDeck deck, Game game){
         int points=0;
+        boolean turnEnded = false;
 
-        return points;
+        while (!turnEnded){
+
+            Card card = deck.takeCard();
+            ArrayList<Die> dies = DiceLogic.ThrowDices();
+
+            points += card.Handle(game, this, dies);
+
+        // ask if want to repeat
+        }
+
+        Score += points;
     }
 
     public boolean isWinning() {
-        if (Score >= game.GoalPoints ) {
+        if (Score >= Game.GoalPoints ) {
             return true;
         }
         else {

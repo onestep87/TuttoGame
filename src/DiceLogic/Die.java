@@ -2,11 +2,11 @@ package DiceLogic;
 
 import java.util.Random;
 
-public class Dice {
+public class Die {
     public int ThrowedAmount;
     public int Min; //Min value is inclusive
-    public int Max=6; //Max is exclusive
-    public Dice(){
+    public int Max=7; //Max is exclusive
+    public Die(){
         ThrowedAmount= Max;
     }
     public int ThrowDice(){
@@ -14,4 +14,5 @@ public class Dice {
         ThrowedAmount = random.nextInt(Max);
         return ThrowedAmount;
     }
+    public int getThrowedAmount(){return ThrowedAmount;}
 }

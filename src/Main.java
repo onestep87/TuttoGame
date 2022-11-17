@@ -1,15 +1,16 @@
-import DiceLogic.Dice;
-import DiceLogic.Dices;
+import DiceLogic.DiceLogic;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        Dices dices = new Dices();
-        dices.ThrowDices();
+        DiceLogic dice = new DiceLogic();
+        dice.ThrowDices();
         for (int i=0; i<6;i++){
-            System.out.println(dices.ThrowDices().get(i).ThrowedAmount+"");
+            System.out.println(dice.ThrowDices().get(i).ThrowedAmount+"");
         }
+        //
+
     }
 }
 

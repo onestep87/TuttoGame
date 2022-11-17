@@ -23,7 +23,7 @@ public class Input {
     public static Integer GetPlayerNum(){
         Scanner input = new Scanner(System.in);
         boolean gotNum = false;
-        System.out.println("Enter player number:");
+        System.out.println("Enter number of players:");
         Integer num=0;
         while (!gotNum) {
             try {
@@ -38,5 +38,6 @@ public class Input {
         }
         return num;
     }
+
 
 }
