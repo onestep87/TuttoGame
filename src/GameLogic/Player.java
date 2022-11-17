@@ -1,12 +1,14 @@
 package GameLogic;
 
+import UI.Input;
+
 public class Player {
-    private int Score;
+    private int Score =0;
     private Game game;
     private String Name;
-    public Player(int Score, String Name){
-        this.Name=Name;
-        this.Score=Score;
+    public Player( ){
+        Name = Input.GetPlayerName();
+
     }
     public int play(){
         int points=0;
@@ -25,4 +27,5 @@ public class Player {
     public String GetName() {
         return Name;
     }
+    public Integer GetScore(){return Score;}
 }
