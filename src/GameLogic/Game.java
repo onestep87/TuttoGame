@@ -1,7 +1,7 @@
 package GameLogic;
 
-import UI.Input;
-import UI.UI;
+import UserInterface.Input;
+import UserInterface.UI;
 import java.util.ArrayList;
 
 public class Game {
