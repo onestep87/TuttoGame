@@ -31,7 +31,7 @@ public class Game {
                 UI.ShowVictoryScreen(CurrentPlayer);
                 return;
             }
-
+            UI.ShowPlayersInfo(this);
             CurrentPlayer.play(new CardDeck(), this);
 
 

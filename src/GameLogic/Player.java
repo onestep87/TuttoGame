@@ -5,6 +5,8 @@ import DiceLogic.Combinations.Combination;
 import DiceLogic.DiceLogic;
 import DiceLogic.Die;
 import UserInterface.Input;
+import UserInterface.UI;
+
 
 import java.util.ArrayList;
 
@@ -21,8 +23,8 @@ public class Player {
         ArrayList<Combination> keptCombinations = new ArrayList<>();
 
         while (!turnEnded){
-            //ui.showPlayers
             Card card = deck.takeCard();
+            UI.showCard(card);
             // ui.showCard()
 
             ArrayList<Die> dies = DiceLogic.ThrowDices();

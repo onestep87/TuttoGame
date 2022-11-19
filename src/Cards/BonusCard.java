@@ -3,6 +3,7 @@ package Cards;
 import Abstract.Card;
 import DiceLogic.DiceLogic;
 import DiceLogic.Die;
+import Enums.CardType;
 import GameLogic.Game;
 import GameLogic.Player;
 
@@ -25,5 +26,10 @@ public class BonusCard extends Card {
         int points = DiceLogic.CalculatePoints(dies);
         points += 100;
         return points;
+    }
+
+    @Override
+    public CardType GetType() {
+        return CardType.BonusCard;
     }
 }

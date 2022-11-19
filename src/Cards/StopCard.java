@@ -2,6 +2,7 @@ package Cards;
 
 import Abstract.Card;
 import DiceLogic.Die;
+import Enums.CardType;
 import GameLogic.Game;
 import GameLogic.Player;
 
@@ -13,5 +14,10 @@ public class StopCard extends Card {
     @Override
     public Integer Handle(Game game, Player player, ArrayList<Die> dies) {
         return 0;
+    }
+
+    @Override
+    public CardType GetType() {
+        return CardType.StopCard;
     }
 }

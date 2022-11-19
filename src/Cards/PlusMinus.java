@@ -2,6 +2,7 @@ package Cards;
 
 import Abstract.Card;
 import DiceLogic.Die;
+import Enums.CardType;
 import GameLogic.Game;
 import GameLogic.Player;
 
@@ -13,5 +14,10 @@ public class PlusMinus extends Card {
     @Override
     public Integer Handle(Game game, Player player, ArrayList<Die> dies) {
         return null;
+    }
+
+    @Override
+    public CardType GetType() {
+        return CardType.PlusMinus;
     }
 }

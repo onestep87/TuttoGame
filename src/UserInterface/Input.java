@@ -3,8 +3,9 @@ package UserInterface;
 import java.util.Scanner;
 
 public class Input {
+    public static Scanner input;
     public static String GetPlayerName(){
-        Scanner input = new Scanner(System.in);
+
         boolean gotName = false;
         System.out.println("Enter player name:");
         String name="";
@@ -21,7 +22,6 @@ public class Input {
         return name;
     }
     public static Integer GetPlayerNum(){
-        Scanner input = new Scanner(System.in);
         boolean gotNum = false;
         System.out.println("Enter number of players:");
         Integer num=0;
@@ -38,6 +38,24 @@ public class Input {
         }
         return num;
     }
+    public static Integer GetPlayerChoice(){
+        boolean gotPlayerChoice = false;
+        System.out.println("Enter number of players:");
+        Integer num=0;
+        while (!gotPlayerChoice) {
+            try {
+                String Input = input.nextLine();
+                num = Integer.parseInt(Input);
+                gotPlayerChoice=true;
+                return num;
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Try again");
+            }
+        }
+        return num;
+    }
+
 
 
 }

@@ -17,7 +17,7 @@ public class DiceLogic {
 
     public static int CalculatePoints(ArrayList<Die> dies){ //not final
         int[]counter= new int[5];
-        for (int i=0; i<6;i++)
+        for (int i=0; i<6;i++) // To Change loop requirments
         {
             for (int j=0; j<6;j++)
             {
