@@ -8,19 +8,20 @@ import UI.Input;
 import java.util.ArrayList;
 
 public class Player {
-    private int Score = 0;
+    public int Score = 0;
     private String Name;
     public Player( ){
         Name = Input.GetPlayerName();
-
     }
     public void play(CardDeck deck, Game game){
         int points=0;
         boolean turnEnded = false;
 
         while (!turnEnded){
-
+            //ui.showPlayers
             Card card = deck.takeCard();
+            // ui.showCard()
+
             ArrayList<Die> dies = DiceLogic.ThrowDices();
 
             points += card.Handle(game, this, dies);
