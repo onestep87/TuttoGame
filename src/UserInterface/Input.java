@@ -40,7 +40,7 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return num;
+        return num; // TODO VALIDATE THAT NUM >= 2, <= 20(e. g.)
     }
     public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
@@ -57,12 +57,12 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return null;  // TODO
+        return new ArrayList<Combination>();  // TODO
     }
 
     public static boolean AskPlayerToContinueTurn(int points){
         // show player how much points he will get
-        return false; // TODO
+        return true; // TODO
     }
 
 }

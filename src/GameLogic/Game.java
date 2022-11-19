@@ -39,7 +39,8 @@ public class Game {
                 System.out.println(ex.getMessage());
             }
 
-            // even if player has more then 6000 every one in round should also have a turn;
+            // TODO LEV
+            // even if player has more then 6000 points, every one in round should also have a turn;
             // if few players have more then 6000 highst wins
 
         }

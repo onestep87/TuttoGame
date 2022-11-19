@@ -1,8 +1,7 @@
 package UserInterface;
 
-import Abstract.Card;
+import Cards.Card;
 import Dice.Combinations.Combination;
-import Dice.DiceLogic;
 import Dice.Die;
 import GameLogic.Game;
 import GameLogic.Player;
@@ -16,7 +15,7 @@ public class UI {
     }
     public static void ShowDice(ArrayList<Die> dice){
         for (int i=0; i<dice.size();i++){
-            System.out.println(dice.get(i).Power+"");
+            System.out.print(dice.get(i).Power+" ");
         }
     }
     public static void ShowPlayersInfo(Game game){
@@ -28,13 +27,16 @@ public class UI {
     public static void ShowCombinations(ArrayList<Combination> combinations){
         for (int i=0;i<combinations.size();i++){
             System.out.println(combinations.get(i).getType());
-        }
+        } // TODO show how much points etc.
     }
-    public static void ShowTutto(){
+    public static void SayThatTutto(){
         System.out.println("Congratulations, you have Tutto!");
     }
     public static void SayThatThrowing(){
         System.out.println("throwing dice ...");
+    }
+    public static void SayThatGotNull(){
+        System.out.println("You got null, you lost all your points at this turn...");
     }
     public static void showCard(Card card){
         System.out.println(card.GetType());
