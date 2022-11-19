@@ -40,7 +40,7 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return num; // TODO VALIDATE THAT NUM >= 2, <= 20(e. g.)
+        return num;
     }
     public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
@@ -57,12 +57,35 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return new ArrayList<Combination>();  // TODO
+        return null;  // TODO
     }
 
-    public static boolean AskPlayerToContinueTurn(int points){
-        // show player how much points he will get
-        return true; // TODO
+    public static Boolean AskPlayerToContinueTurn(int points){
+        System.out.println("Do you want to continue rolling dices? " +
+                "Type R for roll or E for escape" +
+                "\nYour point for this turn:"+points);
+        boolean gotPlayerConfirmationTurn = false;
+        boolean confirmationForNextTurn= false;
+        String name="";
+        while (!gotPlayerConfirmationTurn) {
+            try {
+                name = input.nextLine();
+                if (name=="R"){
+                    gotPlayerConfirmationTurn=true;
+                    return true;
+                }
+                else if (name=="E"){
+                    gotPlayerConfirmationTurn=true;
+                    return false;
+                }
+                else {
+                    throw new Exception();
+                }
+            } catch (Exception ex) {
+                System.out.println("Try again, type R for roll or E for ending turn");
+            }
+        }
+        return confirmationForNextTurn;
     }
 
 }

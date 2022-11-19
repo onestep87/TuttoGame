@@ -24,6 +24,9 @@ public class UI {
             System.out.println(players.get(i).Name+""+players.get(i).Score+"");
         }
     }
+    public static void SayThatGotNull(){
+        System.out.println("You got null, you lost all your points at this turn...");
+    }
     public static void ShowCombinations(ArrayList<Combination> combinations){
         for (int i=0;i<combinations.size();i++){
             System.out.println(combinations.get(i).getType());
@@ -34,9 +37,6 @@ public class UI {
     }
     public static void SayThatThrowing(){
         System.out.println("throwing dice ...");
-    }
-    public static void SayThatGotNull(){
-        System.out.println("You got null, you lost all your points at this turn...");
     }
     public static void showCard(Card card){
         System.out.println(card.GetType());
