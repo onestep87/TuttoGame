@@ -24,10 +24,6 @@ public class UI {
             System.out.println(players.get(i).Name+""+players.get(i).Score+"");
         }
     }
-    public static boolean continueTurn(){
-        boolean check=false;
-        return check;
-    }
     public static void showCard(Card card){
         System.out.println(card.GetType());
     }

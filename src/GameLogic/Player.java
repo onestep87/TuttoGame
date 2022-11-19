@@ -16,36 +16,33 @@ public class Player {
     public String Name;
 
 
-    private ArrayList<Tutto> tuttos;
+   // private ArrayList<Tutto> tuttos;
     public Player( ){
         Name = Input.GetPlayerName();
     }
-    public void play(CardDeck deck, Game game){
-        int points = 0;
-        diceCount = DiceLogic.initialCount;
-        boolean turnEnded = false;
+    public void play(CardDeck deck, Game game, int points) throws Exception {
         Card card = deck.takeCard();
         UI.showCard(card);
 
-        points = card.Handle(this);
+        points = card.Handle(game,this, deck);
 
         Score += points;
-        diceCount = 0;
     }
 
     public boolean isWinning() {
         return Score >= Game.GoalPoints;
     }
 
-    public void addTutto(Tutto tutto){
-        tuttos.add(tutto);
+//    public void addTutto(Tutto tutto){
+//        tuttos.add(tutto);
+//    }
+
+    public boolean askToContinueTurn(int points){
+        return Input.AskPlayerToContinueTurn(points);
     }
 
-    public boolean askToContinueTurn(){
-        return Input.AskPlayerToContinueTurn();
-    }
-
-    public ArrayList<Combination> chooseCombination(){
-
+    public ArrayList<Combination> chooseCombinations(ArrayList<Combination> combinations){
+        combinations = Input.WhichCombinationsToKeep(combinations);
+        return combinations;
     }
 }

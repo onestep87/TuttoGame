@@ -34,8 +34,11 @@ public class DiceLogic {
         return 0;// MAKE SOMETHING
     }
 
-    public static ArrayList<Combination> getCombinations(ArrayList<Die> dice){
-        return null; // TO DO
+    public static DiceResponse getCombinations(ArrayList<Die> dice){
+        DiceResponse response = new DiceResponse();
+        response.combinations = null;
+        response.isTutto = false;
+        return response; // TODO
     }
 
 }
