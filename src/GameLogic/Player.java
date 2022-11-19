@@ -22,7 +22,6 @@ public class Player {
     }
     public void play(CardDeck deck, Game game){
         int points = 0;
-        diceCount = DiceLogic.initialCount;
         boolean turnEnded = false;
         Card card = deck.takeCard();
         UI.showCard(card);
@@ -30,7 +29,6 @@ public class Player {
         points = card.Handle(this);
 
         Score += points;
-        diceCount = 0;
     }
 
     public boolean isWinning() {
