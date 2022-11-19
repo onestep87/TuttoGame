@@ -15,7 +15,7 @@ public class UI {
     }
     public static void ShowDice(DiceLogic dice){
         for (int i=0; i<6;i++){ //6 dices, maybe change hardcoded value later
-            System.out.println(dice.ThrowDices().get(i).ThrowedAmount+"");
+            System.out.println(dice.ThrowDices().get(i).Power+"");
         }
     }
     public static void ShowPlayersInfo(Game game){
