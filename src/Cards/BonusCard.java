@@ -1,12 +1,9 @@
 package Cards;
 
-import Abstract.Card;
 import Dice.Combinations.Combination;
 import Dice.DiceLogic;
 import Dice.DiceResponse;
 import Dice.Die;
-import Dice.Tutto;
-import Enums.CardType;
 import GameLogic.CardDeck;
 import GameLogic.Game;
 import GameLogic.Player;
@@ -36,13 +33,13 @@ public class BonusCard extends Card {
         int points = 0;
 
         while (!turnIsEnded){
-            // UI.SayThatThrowing()
+            UI.SayThatThrowing();
             ArrayList<Die> dice = DiceLogic.ThrowDices(diceCount);
             UI.ShowDice(dice);
             DiceResponse response = DiceLogic.getCombinations(dice);
-            // UI.ShowCombinations(response.combinations);
+            UI.ShowCombinations(response.combinations);
             if(response.isNull){
-                //UI.SayThatGotNull()
+                UI.SayThatGotNull();
                 return 0;
             }
 
@@ -56,7 +53,7 @@ public class BonusCard extends Card {
                 break;
 
             if(diceCount == 0){ // if TUTTO
-                // UI.SayThatTutto()
+                UI.SayThatTutto();
                 points += Bonus;
                 if(player.askToContinueTurn(points))
                     break;
