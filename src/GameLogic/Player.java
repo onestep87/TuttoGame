@@ -20,6 +20,7 @@ public class Player {
     public Player( ){
         Name = Input.GetPlayerName();
     }
+
     public void play(CardDeck deck, Game game, int points) throws Exception {
         Card card = deck.takeCard();
         UI.showCard(card);
