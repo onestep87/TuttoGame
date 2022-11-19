@@ -3,7 +3,8 @@ package GameLogic;
 import Abstract.Card;
 import DiceLogic.DiceLogic;
 import DiceLogic.Die;
-import UI.Input;
+import UserInterface.Input;
+import UserInterface.UI;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,8 @@ public class Player {
         boolean turnEnded = false;
 
         while (!turnEnded){
-            //ui.showPlayers
             Card card = deck.takeCard();
+            UI.showCard(card);
             // ui.showCard()
 
             ArrayList<Die> dies = DiceLogic.ThrowDices();

@@ -1,7 +1,7 @@
 package GameLogic;
 
-import UI.Input;
-import UI.UI;
+import UserInterface.Input;
+import UserInterface.UI;
 import java.util.ArrayList;
 
 public class Game {
@@ -31,7 +31,7 @@ public class Game {
                 UI.ShowVictoryScreen(CurrentPlayer);
                 return;
             }
-
+            UI.ShowPlayersInfo(this);
             CurrentPlayer.play(new CardDeck(), this);
 
 
