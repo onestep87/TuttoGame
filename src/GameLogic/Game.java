@@ -15,14 +15,14 @@ public class Game {
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
-        GoalPoints = GoalPoints;
+        this.GoalPoints = GoalPoints;
         deck = new CardDeck();
 
         for (int i =0;i<PlayerCount;i++){
             players.add(new Player());
         }
     }
-    public void GameLoop(){
+    public void GameLoop() {
         while (!GameIsEnded){
             nextPlayer();
 
@@ -32,17 +32,20 @@ public class Game {
                 return;
             }
             UI.ShowPlayersInfo(this);
-            CurrentPlayer.play(new CardDeck(), this);
+            try {
+                CurrentPlayer.play(new CardDeck(), this, 0);
+            }
+            catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
 
+            // even if player has more then 6000 every one in round should also have a turn;
+            // if few players have more then 6000 highst wins
 
         }
     }
     public ArrayList<Player> getPlayers() {
         return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
     }
 
     private void nextPlayer(){
@@ -55,5 +58,9 @@ public class Game {
         else
             curIndex++;
         CurrentPlayer = players.get(curIndex);
+    }
+
+    public Player getMostSuccessfulPlayer(){
+        return null; // TODO
     }
 }

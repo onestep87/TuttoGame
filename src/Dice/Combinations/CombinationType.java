@@ -1,4 +1,4 @@
-package DiceLogic.Combinations;
+package Dice.Combinations;
 
 public enum CombinationType {
     Triplet1,
