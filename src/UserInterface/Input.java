@@ -60,7 +60,8 @@ public class Input {
         return null;  // TODO
     }
 
-    public static boolean AskPlayerToContinueTurn(){
+    public static boolean AskPlayerToContinueTurn(int points){
+        // show player how much points he will get
         return false; // TODO
     }
 
