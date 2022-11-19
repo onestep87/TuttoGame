@@ -1,6 +1,6 @@
-package DiceLogic.Combinations;
+package Dice.Combinations;
 
-import DiceLogic.Die;
+import Dice.Die;
 
 import java.util.ArrayList;
 

@@ -15,7 +15,7 @@ public class Game {
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
-        GoalPoints = GoalPoints;
+        this.GoalPoints = GoalPoints;
         deck = new CardDeck();
 
         for (int i =0;i<PlayerCount;i++){
@@ -39,10 +39,6 @@ public class Game {
     }
     public ArrayList<Player> getPlayers() {
         return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
     }
 
     private void nextPlayer(){

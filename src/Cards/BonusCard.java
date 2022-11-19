@@ -1,10 +1,10 @@
 package Cards;
 
 import Abstract.Card;
-import DiceLogic.DiceLogic;
-import DiceLogic.Die;
+import Dice.Combinations.Combination;
+import Dice.DiceLogic;
+import Dice.Die;
 import Enums.CardType;
-import GameLogic.Game;
 import GameLogic.Player;
 
 import java.util.ArrayList;
@@ -22,10 +22,22 @@ public class BonusCard extends Card {
         Bonus = bonus;
     }
     @Override
-    public Integer Handle(Game game, Player player, ArrayList<Die> dies) {
-        int points = DiceLogic.CalculatePoints(dies);
-        points += 100;
-        return points;
+    public Integer Handle(Player player) {
+        ArrayList<Combination> keptCombinations = new ArrayList<>();
+        int diceCount = DiceLogic.initialCount;
+
+        ArrayList<Die> dies = DiceLogic.ThrowDices(diceCount);
+        ArrayList<Combination> combinations = DiceLogic.getCombinations(dies);
+
+        // check if tutto and add tutto to array of tutto and throw again
+        // ui.showCombinations
+
+        // combTokeep.addRange(input.choose which wo keep)
+
+        for (Combination comb : keptCombinations) {
+            diceCount -= comb.getDice().size();
+        }
+        // check if tutto and add tutto to array of tutto
     }
 
     @Override

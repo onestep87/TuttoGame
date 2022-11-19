@@ -1,7 +1,7 @@
 package Cards;
 
 import Abstract.Card;
-import DiceLogic.Die;
+import Dice.Die;
 import Enums.CardType;
 import GameLogic.Game;
 import GameLogic.Player;

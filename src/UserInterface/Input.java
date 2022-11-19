@@ -1,9 +1,13 @@
 package UserInterface;
 
+import Dice.Combinations.Combination;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Input {
-    public static Scanner input;
+    public static Scanner input = new Scanner(System.in);
     public static String GetPlayerName(){
 
         boolean gotName = false;
@@ -38,7 +42,7 @@ public class Input {
         }
         return num;
     }
-    public static Integer GetPlayerChoice(){
+    public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
         System.out.println("Enter number of players:");
         Integer num=0;
@@ -47,15 +51,17 @@ public class Input {
                 String Input = input.nextLine();
                 num = Integer.parseInt(Input);
                 gotPlayerChoice=true;
-                return num;
+                return null;
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 System.out.println("Try again");
             }
         }
-        return num;
+        return null;  // TODO
     }
 
-
+    public static boolean AskPlayerToContinueTurn(){
+        return false; // TODO
+    }
 
 }
