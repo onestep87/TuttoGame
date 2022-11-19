@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players=new ArrayList<>();
+    private CardDeck deck;
     protected int PlayerCount;
     public static int GoalPoints;
 
     boolean GameIsEnded;
-    protected int CurrentPlayerIndex=0;
+    protected Player CurrentPlayer;
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
         GoalPoints = GoalPoints;
-        // create deck
-        // shuffel deck
+        deck = new CardDeck();
 
         for (int i =0;i<PlayerCount;i++){
             players.add(new Player());
@@ -24,14 +24,17 @@ public class Game {
     }
     public void GameLoop(){
         while (!GameIsEnded){
-            if(players.get(CurrentPlayerIndex).isWinning()){
+            nextPlayer();
+
+            if(CurrentPlayer.isWinning()){
                 GameIsEnded = true;
-                UI.ShowVictoryScreen(players.get(CurrentPlayerIndex));
+                UI.ShowVictoryScreen(CurrentPlayer);
                 return;
             }
-            // change deck
-            players.get(CurrentPlayerIndex).play(new CardDeck(), this);
-            // next player function
+
+            CurrentPlayer.play(new CardDeck(), this);
+
+
         }
     }
     public ArrayList<Player> getPlayers() {
@@ -40,5 +43,17 @@ public class Game {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    private void nextPlayer(){
+        if(CurrentPlayer == null)
+            CurrentPlayer = players.get(0);
+
+        int curIndex = players.indexOf(CurrentPlayer);
+        if(curIndex >= players.size() - 1)
+            curIndex = 0;
+        else
+            curIndex++;
+        CurrentPlayer = players.get(curIndex);
     }
 }

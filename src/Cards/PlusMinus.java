@@ -7,7 +7,7 @@ import GameLogic.Player;
 
 import java.util.ArrayList;
 
-public class Fireworks extends Card {
+public class PlusMinus extends Card {
     public static final int Count = 5;
 
     @Override
