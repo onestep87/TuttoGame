@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Input {
     public static Scanner input;
     public static String GetPlayerName(){
+
         boolean gotName = false;
         System.out.println("Enter player name:");
         String name="";

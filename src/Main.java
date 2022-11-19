@@ -7,7 +7,7 @@ public class Main {
         DiceLogic dice = new DiceLogic();
         dice.ThrowDices();
         for (int i=0; i<6;i++){
-            System.out.println(dice.ThrowDices().get(i).ThrowedAmount+"");
+            System.out.println(dice.ThrowDices().get(i).Power +"");
         }
         //
 
