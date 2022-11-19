@@ -1,7 +1,7 @@
-package Abstract;
+package Cards;
 
 
-import Enums.CardType;
+import Cards.CardType;
 import GameLogic.CardDeck;
 import GameLogic.Game;
 import GameLogic.Player;
