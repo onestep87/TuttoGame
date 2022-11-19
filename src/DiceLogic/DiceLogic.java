@@ -19,11 +19,11 @@ public class DiceLogic {
         {
             for (int j=0; j<6;j++)
             {
-                if (dies.get(i).ThrowedAmount == 5) {
+                if (dies.get(i).Power == 5) {
                     counter[4]++;
 
                 }
-                if (dies.get(i).ThrowedAmount == 1) {
+                if (dies.get(i).Power == 1) {
                     counter[0]++;
 
                 }
