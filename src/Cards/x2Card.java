@@ -43,7 +43,7 @@ public class x2Card extends Card {
                 points *= 2;
             }
             if(player.askToContinueTurn(points)){
-                player.play(deck, game, points);
+                points += player.play(deck, game, points);
                 break;
             }
             else

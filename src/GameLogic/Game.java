@@ -62,7 +62,21 @@ public class Game {
         CurrentPlayer = players.get(curIndex);
     }
 
-    public Player getMostSuccessfulPlayer(){
-        return null; // TODO
+    public ArrayList<Player> getMostSuccessfulPlayers(){
+        int maxScore = -1;
+        Player successfullPlayer = players.get(0);
+        ArrayList<Player> mostSuccessfulPlayers = new ArrayList<>();
+        for(Player pl : players){
+            if(pl.Score > maxScore){
+                maxScore = pl.Score;
+                successfullPlayer = pl;
+            }
+        }
+        // check if few have highest score
+        for(Player pl : players){
+            if(pl.Score == successfullPlayer.Score)
+                mostSuccessfulPlayers.add(pl);
+        }
+        return mostSuccessfulPlayers;
     }
 }
