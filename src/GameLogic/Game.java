@@ -9,7 +9,8 @@ public class Game {
     private CardDeck deck;
     protected int PlayerCount;
     public static int GoalPoints;
-
+    public static int MinPlayerCount = 2;
+    public static int MaxPlayerCount = 10;
     boolean GameIsEnded;
     protected Player CurrentPlayer;
 

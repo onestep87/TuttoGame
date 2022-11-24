@@ -3,6 +3,7 @@ package UserInterface;
 import Dice.Combinations.Combination;
 import Dice.Combinations.CombinationType;
 import Dice.Combinations.Single;
+import GameLogic.Game;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,6 +36,8 @@ public class Input {
             try {
                 String Input = input.nextLine();
                 num = Integer.parseInt(Input);
+                if(num < Game.MinPlayerCount || num > Game.MaxPlayerCount)
+                    throw new Exception("Invalid player count");
                 gotNum=true;
                 return num;
             } catch (Exception ex) {
