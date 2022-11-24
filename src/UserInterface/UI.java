@@ -29,9 +29,12 @@ public class UI {
     }
     public static void ShowCombinations(ArrayList<Combination> combinations){
         for (int i=0;i<combinations.size();i++){
-            System.out.println(combinations.get(i).getType());
-        } // TODO show how much points etc.
+            ShowCombination(combinations.get(i));
+        }
     }
+    public static void ShowCombination(Combination combination){
+        System.out.println(combination.getType());
+    }// TODO show how much points etc.
     public static void SayThatTutto(){
         System.out.println("Congratulations, you have Tutto!");
     }
