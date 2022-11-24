@@ -8,7 +8,7 @@ public class StraightCard extends Card {
     public static final int Count = 5;
 
     @Override
-    public Integer Handle(Game game, Player player, CardDeck deck) {
+    public Integer Handle(Game game, Player player, CardDeck deck, int points) {
         return null;
     }
 

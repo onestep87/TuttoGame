@@ -24,11 +24,10 @@ public class BonusCard extends Card {
         Bonus = bonus;
     }
     @Override
-    public Integer Handle(Game game, Player player, CardDeck deck) throws Exception {
+    public Integer Handle(Game game, Player player, CardDeck deck, int points) throws Exception {
         ArrayList<Combination> keptCombinations = new ArrayList<>();
         int diceCount = DiceLogic.initialCount;
         boolean turnIsEnded = false;
-        int points = 0;
 
         while (!turnIsEnded){
             UI.SayThatThrowing();
@@ -53,7 +52,7 @@ public class BonusCard extends Card {
 
             }
             if(player.askToContinueTurn(points)){
-                points += player.play(deck, game, points);
+                points = player.play(deck, game, points);
                 break;
             }
             else

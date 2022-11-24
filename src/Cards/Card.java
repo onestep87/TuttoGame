@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public abstract class Card {
     // game for plus minus card
-    public abstract Integer Handle(Game game, Player player, CardDeck deck) throws Exception;
+    public abstract Integer Handle(Game game, Player player, CardDeck deck, int points) throws Exception;
     public abstract CardType GetType();
 
     protected int calculatePoints(ArrayList<Combination> combinations){

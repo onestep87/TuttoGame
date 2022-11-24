@@ -20,7 +20,7 @@ public class Player {
         Card card = deck.takeCard();
         UI.showCard(card);
 
-        points = card.Handle(game,this, deck);
+        points = card.Handle(game,this, deck, points);
 
         Score += points;
 

@@ -15,11 +15,11 @@ public class PlusMinus extends Card {
     public static final int Count = 5;
 
     @Override
-    public Integer Handle(Game game, Player player, CardDeck deck) throws Exception {
+    public Integer Handle(Game game, Player player, CardDeck deck, int points) throws Exception {
         ArrayList<Combination> keptCombinations = new ArrayList<>();
         int diceCount = DiceLogic.initialCount;
         boolean turnIsEnded = false;
-        int points = 0;
+        points = 0;
 
         while (!turnIsEnded) {
             UI.SayThatThrowing();
@@ -49,7 +49,12 @@ public class PlusMinus extends Card {
                         pl.Score -= 1000;
                 }
                 points += 1000;
-                points += player.play(deck, game, points);
+                if(player.askToContinueTurn(points)){
+                    points = player.play(deck, game, points);
+                    break;
+                }
+                else
+                    break;
             }
         }
         return points;

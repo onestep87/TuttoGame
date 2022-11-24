@@ -68,7 +68,7 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return null;  // TODO
+        return null;  // TODO notice that player should take at least combination on each throw
     }
 
     public static Boolean AskPlayerToContinueTurn(int points){

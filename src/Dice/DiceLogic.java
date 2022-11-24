@@ -22,5 +22,4 @@ public class DiceLogic {
         response.isTutto = false;
         return response; // TODO LEV
     }
-
 }
