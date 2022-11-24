@@ -1,6 +1,8 @@
 package UserInterface;
 
 import Dice.Combinations.Combination;
+import Dice.Combinations.CombinationType;
+import Dice.Combinations.Single;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,14 +46,20 @@ public class Input {
     }
     public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
-        System.out.println("Enter number of players:");
-        Integer num=0;
+        System.out.println("Choose which combination to keep:");
+        UI.ShowCombinations(combinations);
+        ArrayList<Combination> combinations_Return = new ArrayList<Combination>();
+        Integer[] num = new Integer[]{};
         while (!gotPlayerChoice) {
             try {
                 String Input = input.nextLine();
-                num = Integer.parseInt(Input);
+                String[] numbers = Input.split(" ");
+                for (int i=0;i>numbers.length;i++){
+                    num[i]= Integer.parseInt(numbers[i]);
+                    combinations_Return.add(num[i-1],combinations.get(i-1));
+                }
                 gotPlayerChoice=true;
-                return null;
+                return combinations_Return;
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 System.out.println("Try again");
