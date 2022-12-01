@@ -20,8 +20,8 @@ public class CardDeck {
             initCards();
             shuffle();
         }
-
-        return deck.get(0);
+        Random rand = new Random();
+        return deck.get(rand.nextInt(deck.size()));
     }
 
     public void shuffle(){
@@ -43,8 +43,8 @@ public class CardDeck {
             deck.add(new Fireworks());
         for(int i = 0; i < PlusMinus.Count; i++)
             deck.add(new PlusMinus());
-        for(int i = 0; i < StopCard.Count; i++)
-            deck.add(new StopCard());
+//        for(int i = 0; i < StopCard.Count; i++)
+//            deck.add(new StopCard());
 //        for(int i = 0; i < StraightCard.Count; i++)
 //            deck.add(new StraightCard());
         for(int i = 0; i < x2Card.Count; i++)

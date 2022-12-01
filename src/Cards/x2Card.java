@@ -39,6 +39,7 @@ public class x2Card extends Card {
 
             if(diceCount == 0){ // if TUTTO
                 UI.SayThatTutto();
+                System.out.println("Your points are doubled!");
                 points *= 2;
                 if(player.askToTakeNewCard(points)){
                     points = player.play(deck, game, points);

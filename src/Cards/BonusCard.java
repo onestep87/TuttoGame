@@ -50,6 +50,7 @@ public class BonusCard extends Card {
 
             if(diceCount == 0){ // if TUTTO
                 UI.SayThatTutto();
+                System.out.println("You received bonus: " + Bonus + "points");
                 points += Bonus;
                 if(player.askToTakeNewCard(points)){
                     points = player.play(deck, game, points);

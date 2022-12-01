@@ -5,7 +5,7 @@ import UserInterface.UI;
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Player> players=new ArrayList<>();
+    public ArrayList<Player> players=new ArrayList<>();
     private CardDeck deck;
     protected int PlayerCount;
     public static int GoalPoints;
@@ -26,8 +26,9 @@ public class Game {
     }
     public void GameLoop() throws Exception {
         while (!GameIsEnded){
-
             for(Player pl : players){
+                UI.ShowPlayersInfo(this);
+                System.out.println("Player's " + pl.Name + " turn");
                 pl.Score += pl.play(deck, this, 0);
                 if(cloverLeafHandled){
                     UI.ShowVictoryScreen(pl);
@@ -41,32 +42,6 @@ public class Game {
                 UI.ShowVictoryScreen(mostSuccsessfulPl);
                 break;
             }
-//            if(CurrentPlayer.isWinning()){
-//                GameIsEnded = true;
-//                UI.ShowVictoryScreen(CurrentPlayer);
-//                return;
-//            }
-//            UI.ShowPlayersInfo(this);
-//            try {
-//                CurrentPlayer.Score += CurrentPlayer.play(new CardDeck(), this, 0);
-//            }
-//            catch (Exception ex){
-//                System.out.println(ex.getMessage());
-//            }
-            // for (all players)
-            //  {
-            //  player. play()
-            //  check if cloverleafHandled
-            //     showVictory(player)
-            //  }
-            // check winning()
-
-            // playerWin(){ gameEnded = true; }
-
-            // TODO LEV
-            // even if player has more then 6000 points, every one in round should also have a turn;
-            // if few players have more then 6000 highst wins
-
         }
     }
     public ArrayList<Player> getPlayers() {
