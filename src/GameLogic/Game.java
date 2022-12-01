@@ -12,7 +12,8 @@ public class Game {
     public static int MinPlayerCount = 2;
     public static int MaxPlayerCount = 10;
     boolean GameIsEnded;
-    protected Player CurrentPlayer;
+    boolean cloverLeafHandled;
+    //protected Player CurrentPlayer;
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
@@ -23,22 +24,44 @@ public class Game {
             players.add(new Player());
         }
     }
-    public void GameLoop() {
+    public void GameLoop() throws Exception {
         while (!GameIsEnded){
-            nextPlayer();
 
-            if(CurrentPlayer.isWinning()){
-                GameIsEnded = true;
-                UI.ShowVictoryScreen(CurrentPlayer);
-                return;
+            for(Player pl : players){
+                pl.Score += pl.play(new CardDeck(), this, 0);
+                if(cloverLeafHandled){
+                    UI.ShowVictoryScreen(pl);
+                    GameIsEnded = true;
+                    break;
+                }
             }
-            UI.ShowPlayersInfo(this);
-            try {
-                CurrentPlayer.play(new CardDeck(), this, 0);
+
+            Player mostSuccsessfulPl = getMostSuccessfulPlayers().get(0);
+            if(mostSuccsessfulPl.Score > GoalPoints){
+                UI.ShowVictoryScreen(mostSuccsessfulPl);
+                break;
             }
-            catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
+//            if(CurrentPlayer.isWinning()){
+//                GameIsEnded = true;
+//                UI.ShowVictoryScreen(CurrentPlayer);
+//                return;
+//            }
+//            UI.ShowPlayersInfo(this);
+//            try {
+//                CurrentPlayer.Score += CurrentPlayer.play(new CardDeck(), this, 0);
+//            }
+//            catch (Exception ex){
+//                System.out.println(ex.getMessage());
+//            }
+            // for (all players)
+            //  {
+            //  player. play()
+            //  check if cloverleafHandled
+            //     showVictory(player)
+            //  }
+            // check winning()
+
+            // playerWin(){ gameEnded = true; }
 
             // TODO LEV
             // even if player has more then 6000 points, every one in round should also have a turn;
@@ -50,17 +73,17 @@ public class Game {
         return players;
     }
 
-    private void nextPlayer(){
-        if(CurrentPlayer == null)
-            CurrentPlayer = players.get(0);
-
-        int curIndex = players.indexOf(CurrentPlayer);
-        if(curIndex >= players.size() - 1)
-            curIndex = 0;
-        else
-            curIndex++;
-        CurrentPlayer = players.get(curIndex);
-    }
+//    private void nextPlayer(){
+//        if(CurrentPlayer == null)
+//            CurrentPlayer = players.get(0);
+//
+//        int curIndex = players.indexOf(CurrentPlayer);
+//        if(curIndex >= players.size() - 1)
+//            curIndex = 0;
+//        else
+//            curIndex++;
+//        CurrentPlayer = players.get(curIndex);
+//    }
 
     public ArrayList<Player> getMostSuccessfulPlayers(){
         int maxScore = -1;

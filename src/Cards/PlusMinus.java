@@ -36,7 +36,7 @@ public class PlusMinus extends Card {
             keptCombinations.addAll(combinationsToKeep);
             diceCount = setDiceCount(diceCount, combinationsToKeep);
 
-            points = calculatePoints(keptCombinations);
+            points += calculatePoints(keptCombinations);
 
             if(diceCount == 0){ // if TUTTO
                 ArrayList<Player> mostSuccessfulPlayers = game.getMostSuccessfulPlayers();
@@ -49,13 +49,15 @@ public class PlusMinus extends Card {
                         pl.Score -= 1000;
                 }
                 points += 1000;
-                if(player.askToContinueTurn(points)){
+                if(player.askToTakeNewCard(points)){
                     points = player.play(deck, game, points);
                     break;
                 }
                 else
                     break;
             }
+            if(!player.askToContinueTurn(points))
+                break;
         }
         return points;
     }

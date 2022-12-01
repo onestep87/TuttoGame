@@ -26,7 +26,7 @@ public class StraightCard extends Card {
         straightCombination.tryCombine(initDice);
         UI.ShowCombination(straightCombination);
         // TODO
-        // Choose dice to save
+        // save unique dies
         // Show dice you choosen
         while (!turnIsEnded) {
             UI.SayThatThrowing();

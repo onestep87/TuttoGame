@@ -35,17 +35,19 @@ public class x2Card extends Card {
             keptCombinations.addAll(combinationsToKeep);
             diceCount = setDiceCount(diceCount, combinationsToKeep);
 
-            points = calculatePoints(keptCombinations);
+            points += calculatePoints(keptCombinations);
 
             if(diceCount == 0){ // if TUTTO
                 UI.SayThatTutto();
                 points *= 2;
+                if(player.askToTakeNewCard(points)){
+                    points = player.play(deck, game, points);
+                    break;
+                }
+                else
+                    break;
             }
-            if(player.askToContinueTurn(points)){
-                points = player.play(deck, game, points);
-                break;
-            }
-            else
+            if(!player.askToContinueTurn(points))
                 break;
 
         }

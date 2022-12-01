@@ -32,7 +32,11 @@ public class Player {
     }
 
     public boolean askToContinueTurn(int points){
-        return Input.AskPlayerToContinueTurn(points);
+        return Input.AskPlayerToReroll(points);
+    }
+
+    public boolean askToTakeNewCard(int points){
+        return Input.AskPlayerToTakeNewCard(points);
     }
 
     public ArrayList<Combination> chooseCombinations(ArrayList<Combination> combinations){

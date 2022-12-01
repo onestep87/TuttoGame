@@ -1,12 +1,9 @@
 package UserInterface;
 
 import Dice.Combinations.Combination;
-import Dice.Combinations.CombinationType;
-import Dice.Combinations.Single;
 import GameLogic.Game;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class Input {
@@ -50,16 +47,13 @@ public class Input {
     public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
         System.out.println("Choose which combination to keep:");
-        UI.ShowCombinations(combinations);
         ArrayList<Combination> combinations_Return = new ArrayList<Combination>();
-        Integer[] num = new Integer[]{};
         while (!gotPlayerChoice) {
             try {
                 String Input = input.nextLine();
                 String[] numbers = Input.split(" ");
-                for (int i=0;i>numbers.length;i++){
-                    num[i]= Integer.parseInt(numbers[i]);
-                    combinations_Return.add(num[i-1],combinations.get(i-1));
+                for (int i=0;i<numbers.length;i++){
+                    combinations_Return.add(combinations.get(Integer.parseInt(numbers[i])-1));
                 }
                 gotPlayerChoice=true;
                 return combinations_Return;
@@ -71,7 +65,7 @@ public class Input {
         return null;  // TODO notice that player should take at least combination on each throw
     }
 
-    public static Boolean AskPlayerToContinueTurn(int points){
+    public static Boolean AskPlayerToReroll(int points){
         System.out.println("Do you want to continue rolling dices? " +
                 "Type R for roll or E for escape" +
                 "\nYour point for this turn:"+points);
@@ -80,12 +74,12 @@ public class Input {
         String name="";
         while (!gotPlayerConfirmationTurn) {
             try {
-                name = input.nextLine();
-                if (name=="R"){
+                name = input.nextLine().toUpperCase();
+                if (name.equals("R")){
                     gotPlayerConfirmationTurn=true;
                     return true;
                 }
-                else if (name=="E"){
+                else if (name.equals("E")){
                     gotPlayerConfirmationTurn=true;
                     return false;
                 }
@@ -99,4 +93,31 @@ public class Input {
         return confirmationForNextTurn;
     }
 
+    public static Boolean AskPlayerToTakeNewCard(int points){
+        System.out.println("Do you want to take new card? " +
+                "Type Y to take or N to end the turn" +
+                "\nYour point for this turn:"+points);
+        boolean gotPlayerConfirmationTurn = false;
+        boolean confirmationForNextTurn= false;
+        String name="";
+        while (!gotPlayerConfirmationTurn) {
+            try {
+                name = input.nextLine().toUpperCase();
+                if (name.equals("Y")){
+                    gotPlayerConfirmationTurn=true;
+                    return true;
+                }
+                else if (name.equals("N")){
+                    gotPlayerConfirmationTurn=true;
+                    return false;
+                }
+                else {
+                    throw new Exception();
+                }
+            } catch (Exception ex) {
+                System.out.println("Try again, type Y to take or N to end the turn");
+            }
+        }
+        return confirmationForNextTurn;
+    }
 }

@@ -42,20 +42,23 @@ public class BonusCard extends Card {
 
             ArrayList<Combination> combinationsToKeep = player.chooseCombinations(response.combinations);
             keptCombinations.addAll(combinationsToKeep);
+            System.out.println("Kept combinations: ");
+            UI.ShowCombinations(keptCombinations);
             diceCount = setDiceCount(diceCount, combinationsToKeep);
 
-            points = calculatePoints(keptCombinations);
+            points += calculatePoints(keptCombinations);
 
             if(diceCount == 0){ // if TUTTO
                 UI.SayThatTutto();
                 points += Bonus;
-
+                if(player.askToTakeNewCard(points)){
+                    points = player.play(deck, game, points);
+                    break;
+                }
+                else
+                    break;
             }
-            if(player.askToContinueTurn(points)){
-                points = player.play(deck, game, points);
-                break;
-            }
-            else
+            if(!player.askToContinueTurn(points))
                 break;
         }
         return points;

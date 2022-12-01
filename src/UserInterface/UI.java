@@ -17,6 +17,7 @@ public class UI {
         for (int i=0; i<dice.size();i++){
             System.out.print(dice.get(i).Power+" ");
         }
+        System.out.println();
     }
     public static void ShowPlayersInfo(Game game){
         ArrayList<Player> players = game.getPlayers();
@@ -29,12 +30,14 @@ public class UI {
     }
     public static void ShowCombinations(ArrayList<Combination> combinations){
         for (int i=0;i<combinations.size();i++){
-            ShowCombination(combinations.get(i));
+            System.out.print((i + 1) + ". ");
+            System.out.print(combinations.get(i).getType());
+            System.out.println(" points: " + combinations.get(i).getPoints());
         }
     }
     public static void ShowCombination(Combination combination){
         System.out.println(combination.getType());
-    }// TODO show how much points etc.
+    }
     public static void SayThatTutto(){
         System.out.println("Congratulations, you have Tutto!");
     }
