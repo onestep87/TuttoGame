@@ -28,7 +28,7 @@ public class Game {
         while (!GameIsEnded){
 
             for(Player pl : players){
-                pl.Score += pl.play(new CardDeck(), this, 0);
+                pl.Score += pl.play(deck, this, 0);
                 if(cloverLeafHandled){
                     UI.ShowVictoryScreen(pl);
                     GameIsEnded = true;
