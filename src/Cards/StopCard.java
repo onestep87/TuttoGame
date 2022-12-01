@@ -8,7 +8,7 @@ public class StopCard extends Card {
     public static final int Count = 10;
 
     @Override
-    public Integer Handle(Game game, Player player, CardDeck deck) {
+    public Integer Handle(Game game, Player player, CardDeck deck, int points) {
         return 0;
     }
 

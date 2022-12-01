@@ -9,7 +9,7 @@ public class Single implements Combination{
     private CombinationType type;
     public Single(Die die) throws Exception {
         if(die == null) throw new Exception("Die is null");
-        if(die.Power != 1 || die.Power != 5)
+        if(die.Power != 1 && die.Power != 5)
             throw new Exception("Cannot create a Combination, die power should be 1 or 5");
         this.die = die;
         switch (die.Power){

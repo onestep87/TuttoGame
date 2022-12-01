@@ -8,11 +8,13 @@ public class Die {
     public Die(){
         Power = 6;
     }
+    public Die(int power){
+        Power = power;
+    }
     public int ThrowDice(){
         int Max=7;
         Random random = new Random();
         Power = random.nextInt(6) + 1;
         return Power;
     }
-    public int getPower(){return Power;}
 }

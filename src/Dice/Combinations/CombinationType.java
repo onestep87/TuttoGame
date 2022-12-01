@@ -8,5 +8,6 @@ public enum CombinationType {
     Triplet5,
     Triplet6,
     Single1,
-    Singel5
+    Singel5,
+    Straight
 }

@@ -18,9 +18,11 @@ public class DiceLogic {
 
     public static DiceResponse getCombinations(ArrayList<Die> dice) throws Exception {
         DiceResponse response = new DiceResponse();
-        response.combinations = null;
+        response.combinations = new ArrayList<>();
+        response.combinations.add(new Single(new Die(5)));
+        response.combinations.add(new Single(new Die(1)));
         response.isTutto = false;
+        response.isNull = false;
         return response; // TODO LEV
     }
-
 }
