@@ -24,7 +24,7 @@ public class StraightCard extends Card {
         UI.SayThatThrowing();
         ArrayList<Die> initDice = DiceLogic.ThrowDices(diceCount);
         straightCombination.tryCombine(initDice);
-        UI.ShowCombination(straightCombination);
+        UI.ShowStraightCombination(initDice);
         // TODO
         // save unique dies
         // Show dice you choosen
@@ -35,7 +35,7 @@ public class StraightCard extends Card {
             boolean isCombined = straightCombination.tryCombine(dice);
             if(isCombined){
                 // say that combined
-                UI.ShowCombination(straightCombination);
+                UI.ShowStraightCombination(initDice);
                 if(straightCombination.isStraight()){
                     System.out.println("You got STRAIGHT, you receive 2000 points");
                     points += straightCombination.getPoints();
