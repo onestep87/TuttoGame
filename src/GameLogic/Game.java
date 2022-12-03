@@ -28,6 +28,7 @@ public class Game {
             for(Player pl : players){
                 UI.ShowPlayersInfo(this);
                 System.out.println("===== " + pl.Name + " turn =====");
+                Input.Wait();
                 pl.Score += pl.play(deck, this, 0);
                 if(forceWin){
                     UI.ShowVictoryScreen(pl);

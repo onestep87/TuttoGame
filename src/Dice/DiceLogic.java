@@ -5,6 +5,8 @@ import Dice.Combinations.Single;
 import Dice.Combinations.Triplet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DiceLogic {
     public static int initialCount = 6;
@@ -24,6 +26,16 @@ public class DiceLogic {
 //            dice.add(new Die(2));
 //        //
       return dice;
+    }
+
+    public static ArrayList<Die> SaveUnique(ArrayList<Die> dice){
+        Set<Integer> set = new HashSet<>();
+        ArrayList<Die> uniqueDice = new ArrayList<>();
+        for(Die die : dice){
+            if(set.add(die.Power))
+                uniqueDice.add(die);
+        }
+        return uniqueDice;
     }
 
     public static DiceResponse getCombinations(ArrayList<Die> dice) throws Exception {

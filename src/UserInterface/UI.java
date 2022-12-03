@@ -2,12 +2,16 @@ package UserInterface;
 
 import Cards.Card;
 import Dice.Combinations.Combination;
+import Dice.Combinations.Straight;
 import Dice.DiceLogic;
 import Dice.Die;
 import GameLogic.Game;
 import GameLogic.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.*;
 
 public class UI {
     public static void ShowVictoryScreen(Player player){
@@ -40,11 +44,19 @@ public class UI {
     public static void ShowCombination(Combination combination){
         System.out.println(combination.getType());
     }
-    public static void ShowStraightCombination(ArrayList<Die> dice){
-        for (int i=0;i<dice.size();i++){
-            System.out.println(dice.get(i));
-        }
+    public static void ShowStraightCombination(Straight straight){
+        System.out.println("Your straight combination: ");
 
+        ArrayList<Integer> powers = new ArrayList<>();
+        for(Die die : straight.getDice())
+            powers.add(die.Power);
+
+        Collections.sort(powers);
+
+        for (int i=0;i<straight.getDice().size();i++){
+            System.out.print(powers.get(i) + " ");
+        }
+        System.out.println();
     }
     public static void SayThatTutto(){
         System.out.println("Congratulations, you have Tutto!");

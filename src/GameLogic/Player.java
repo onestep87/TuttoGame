@@ -19,6 +19,7 @@ public class Player {
     public int play(CardDeck deck, Game game, int points) throws Exception {
         Card card = deck.takeCard();
         UI.showCard(card);
+        Input.Wait();
 
         points = card.Handle(game,this, deck, points);
 
