@@ -14,15 +14,15 @@ public class DiceLogic {
             dice.add(new Die());
             dice.get(i).ThrowDice();
         }
-        // delete
-            dice = new ArrayList<>();
-            dice.add(new Die(2));
-            dice.add(new Die(2));
-            dice.add(new Die(2));
-            dice.add(new Die(2));
-            dice.add(new Die(2));
-            dice.add(new Die(2));
-        //
+//        // delete
+//            dice = new ArrayList<>();
+//            dice.add(new Die(2));
+//            dice.add(new Die(2));
+//            dice.add(new Die(2));
+//            dice.add(new Die(2));
+//            dice.add(new Die(2));
+//            dice.add(new Die(2));
+//        //
       return dice;
     }
 
