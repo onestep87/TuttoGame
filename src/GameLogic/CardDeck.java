@@ -40,16 +40,16 @@ public class CardDeck {
 
     private void initCards(){
         deck = new Stack<>();
-        for(int i = 0; i < Cloverleaf.Count; i++)
-            deck.push(new Cloverleaf());
+//        for(int i = 0; i < Cloverleaf.Count; i++)
+//            deck.push(new Cloverleaf());
 //        for(int i = 0; i < Fireworks.Count; i++)
 //            deck.push(new Fireworks());
 //        for(int i = 0; i < PlusMinus.Count; i++)
 //            deck.push(new PlusMinus());
 //        for(int i = 0; i < StopCard.Count; i++)
 //            deck.push(new StopCard());
-//        for(int i = 0; i < StraightCard.Count; i++)
-//            deck.push(new StraightCard());
+        for(int i = 0; i < StraightCard.Count; i++)
+            deck.push(new StraightCard());
 //        for(int i = 0; i < x2Card.Count; i++)
 //          deck.push(new x2Card());
 //        for(int i = 0; i < BonusCard.Count200; i++)
