@@ -2,6 +2,7 @@ package UserInterface;
 
 import Cards.Card;
 import Dice.Combinations.Combination;
+import Dice.DiceLogic;
 import Dice.Die;
 import GameLogic.Game;
 import GameLogic.Player;
@@ -37,6 +38,12 @@ public class UI {
     }
     public static void ShowCombination(Combination combination){
         System.out.println(combination.getType());
+    }
+    public static void ShowStraightCombination(ArrayList<Die> dice){
+        for (int i=0;i<dice.size();i++){
+            System.out.println(dice.get(i));
+        }
+
     }
     public static void SayThatTutto(){
         System.out.println("Congratulations, you have Tutto!");
