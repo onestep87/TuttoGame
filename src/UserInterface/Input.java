@@ -65,9 +65,9 @@ public class Input {
         return null;  // TODO notice that player should take at least combination on each throw
     }
 
-    public static Boolean AskPlayerToReroll(int points){
+    public static Boolean AskPlayerToReroll(int points, Game game){
         System.out.println("Do you want to continue rolling dices? " +
-                "Type R for roll or E for escape" +
+                "Type R for roll, E for escape or D to show player info" +
                 "\nYour point for this turn:"+points);
         boolean gotPlayerConfirmationTurn = false;
         boolean confirmationForNextTurn= false;
@@ -82,6 +82,9 @@ public class Input {
                 else if (name.equals("E")){
                     gotPlayerConfirmationTurn=true;
                     return false;
+                }
+                else if (name.equals("D")){
+                    UI.ShowPlayersInfo(game);
                 }
                 else {
                     throw new Exception();
@@ -119,5 +122,9 @@ public class Input {
             }
         }
         return confirmationForNextTurn;
+    }
+
+    public static void Wait(){
+        input.nextLine();
     }
 }

@@ -31,8 +31,8 @@ public class Player {
         return Score >= Game.GoalPoints;
     }
 
-    public boolean askToContinueTurn(int points){
-        return Input.AskPlayerToReroll(points);
+    public boolean askToContinueTurn(int points, Game game){
+        return Input.AskPlayerToReroll(points, game);
     }
 
     public boolean askToTakeNewCard(int points){

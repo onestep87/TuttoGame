@@ -40,7 +40,7 @@ public class StraightCard extends Card {
                     System.out.println("You got STRAIGHT, you receive 2000 points");
                     points += straightCombination.getPoints();
                     // ask if want to continue
-                    if(player.askToContinueTurn(points)){
+                    if(player.askToContinueTurn(points, game)){
                         points = player.play(deck, game, points);
                         break;
                     }
@@ -53,7 +53,7 @@ public class StraightCard extends Card {
                 return 0;
             }
         }
-        return 0;
+        return points;
     }
 
     @Override

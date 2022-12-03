@@ -27,7 +27,8 @@ public class UI {
         }
     }
     public static void SayThatGotNull(){
-        System.out.println("You got null, you lost all your points at this turn...");
+        System.out.println("You rolled null...");
+        Input.Wait();
     }
     public static void ShowCombinations(ArrayList<Combination> combinations){
         for (int i=0;i<combinations.size();i++){

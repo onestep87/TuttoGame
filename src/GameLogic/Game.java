@@ -28,14 +28,18 @@ public class Game {
         while (!GameIsEnded){
             for(Player pl : players){
                 UI.ShowPlayersInfo(this);
-                System.out.println("Player's " + pl.Name + " turn");
+                System.out.println("===== " + pl.Name + " turn =====");
                 pl.Score += pl.play(deck, this, 0);
                 if(cloverLeafHandled){
+                    System.out.println("You won using Cloverleaf card!");
                     UI.ShowVictoryScreen(pl);
                     GameIsEnded = true;
                     break;
                 }
             }
+
+            if(GameIsEnded)
+                break;
 
             Player mostSuccsessfulPl = getMostSuccessfulPlayers().get(0);
             if(mostSuccsessfulPl.Score > GoalPoints){
@@ -47,18 +51,6 @@ public class Game {
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
-//    private void nextPlayer(){
-//        if(CurrentPlayer == null)
-//            CurrentPlayer = players.get(0);
-//
-//        int curIndex = players.indexOf(CurrentPlayer);
-//        if(curIndex >= players.size() - 1)
-//            curIndex = 0;
-//        else
-//            curIndex++;
-//        CurrentPlayer = players.get(curIndex);
-//    }
 
     public ArrayList<Player> getMostSuccessfulPlayers(){
         int maxScore = -1;
@@ -76,5 +68,9 @@ public class Game {
                 mostSuccessfulPlayers.add(pl);
         }
         return mostSuccessfulPlayers;
+    }
+
+    public void forceWin(){
+        cloverLeafHandled = true;
     }
 }

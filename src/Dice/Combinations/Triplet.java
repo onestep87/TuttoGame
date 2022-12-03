@@ -10,7 +10,7 @@ public class Triplet implements Combination{
     private int power;
     private int points;
     public Triplet(ArrayList<Die> dice) throws Exception {
-        if(isValidDice(dice))
+        if(!isValidDice(dice))
             throw new Exception("Cannot create triplet Combination");
         this.dice = dice;
         power = dice.get(0).Power;
@@ -46,17 +46,17 @@ public class Triplet implements Combination{
     }
     @Override
     public int getPoints() {
-        return 0;
+        return points;
     }
 
     @Override
     public CombinationType getType() {
-        return null;
+        return type;
     }
 
     @Override
     public ArrayList<Die> getDice() {
-        return null;
+        return dice;
     }
 
     private boolean isValidDice(ArrayList<Die> dice) throws Exception {
