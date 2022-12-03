@@ -19,6 +19,7 @@ public class Player {
     public int play(CardDeck deck, Game game, int points) throws Exception {
         Card card = deck.takeCard();
         UI.showCard(card);
+        Input.Wait();
 
         points = card.Handle(game,this, deck, points);
 
@@ -31,8 +32,8 @@ public class Player {
         return Score >= Game.GoalPoints;
     }
 
-    public boolean askToContinueTurn(int points){
-        return Input.AskPlayerToReroll(points);
+    public boolean askToContinueTurn(int points, Game game){
+        return Input.AskPlayerToReroll(points, game);
     }
 
     public boolean askToTakeNewCard(int points){

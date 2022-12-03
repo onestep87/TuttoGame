@@ -8,6 +8,7 @@ import Dice.Die;
 import GameLogic.CardDeck;
 import GameLogic.Game;
 import GameLogic.Player;
+import UserInterface.Input;
 import UserInterface.UI;
 
 import java.util.ArrayList;
@@ -22,25 +23,27 @@ public class StraightCard extends Card {
         boolean turnIsEnded = false;
 
         UI.SayThatThrowing();
-        ArrayList<Die> initDice = DiceLogic.ThrowDices(diceCount);
-        straightCombination.tryCombine(initDice);
-        UI.ShowStraightCombination(initDice);
-        // TODO
-        // save unique dies
-        // Show dice you choosen
+        ArrayList<Die> dice = DiceLogic.ThrowDices(diceCount);
+        UI.ShowDice(dice);
+
+        straightCombination.dice = DiceLogic.SaveUnique(dice);
+        UI.ShowStraightCombination(straightCombination);
+        Input.Wait();
+
         while (!turnIsEnded) {
             UI.SayThatThrowing();
-            ArrayList<Die> dice = DiceLogic.ThrowDices(diceCount);
+            dice = DiceLogic.ThrowDices(diceCount);
             UI.ShowDice(dice);
             boolean isCombined = straightCombination.tryCombine(dice);
             if(isCombined){
-                // say that combined
-                UI.ShowStraightCombination(initDice);
+                System.out.println("Some dies where combined to your combination!");
+                UI.ShowStraightCombination(straightCombination);
+                Input.Wait();
                 if(straightCombination.isStraight()){
                     System.out.println("You got STRAIGHT, you receive 2000 points");
                     points += straightCombination.getPoints();
                     // ask if want to continue
-                    if(player.askToContinueTurn(points)){
+                    if(player.askToTakeNewCard(points)){
                         points = player.play(deck, game, points);
                         break;
                     }
@@ -53,7 +56,7 @@ public class StraightCard extends Card {
                 return 0;
             }
         }
-        return 0;
+        return points;
     }
 
     @Override

@@ -5,23 +5,26 @@ import Cards.*;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 public class CardDeck {
-    private ArrayList<Card> deck;
+    private Stack<Card> deck;
     public CardDeck(){
         initCards();
         shuffle();
     }
     public Card takeCard() throws Exception {
 
-        if(deck == null)
-            throw new Exception("Deck is null!");
+        if(deck == null){
+            initCards();
+            shuffle();
+        }
         if(deck.size() == 0){
             initCards();
             shuffle();
         }
-        Random rand = new Random();
-        return deck.get(rand.nextInt(deck.size()));
+
+        return deck.pop();
     }
 
     public void shuffle(){
@@ -36,28 +39,28 @@ public class CardDeck {
     }
 
     private void initCards(){
-        deck = new ArrayList<>();
+        deck = new Stack<>();
 //        for(int i = 0; i < Cloverleaf.Count; i++)
-//            deck.add(new Cloverleaf());
-       // for(int i = 0; i < Fireworks.Count; i++)
-            deck.add(new Fireworks());
-      //  for(int i = 0; i < PlusMinus.Count; i++)
-            deck.add(new PlusMinus());
-       // for(int i = 0; i < StopCard.Count; i++)
-            deck.add(new StopCard());
+//            deck.push(new Cloverleaf());
+//        for(int i = 0; i < Fireworks.Count; i++)
+//            deck.push(new Fireworks());
+//        for(int i = 0; i < PlusMinus.Count; i++)
+//            deck.push(new PlusMinus());
+//        for(int i = 0; i < StopCard.Count; i++)
+//            deck.push(new StopCard());
         for(int i = 0; i < StraightCard.Count; i++)
-//            deck.add(new StraightCard());
-       // for(int i = 0; i < x2Card.Count; i++)
-            deck.add(new x2Card());
-      //  for(int i = 0; i < BonusCard.Count200; i++)
-            deck.add(new BonusCard(200));
-      //  for(int i = 0; i < BonusCard.Count300; i++)
-            deck.add(new BonusCard(300));
-      //  for(int i = 0; i < BonusCard.Count400; i++)
-            deck.add(new BonusCard(400));
-       // for(int i = 0; i < BonusCard.Count500; i++)
-            deck.add(new BonusCard(500));
-      //  for(int i = 0; i < BonusCard.Count600; i++)
-            deck.add(new BonusCard(600));
+            deck.push(new StraightCard());
+//        for(int i = 0; i < x2Card.Count; i++)
+//          deck.push(new x2Card());
+//        for(int i = 0; i < BonusCard.Count200; i++)
+//            deck.push(new BonusCard(200));
+//        for(int i = 0; i < BonusCard.Count300; i++)
+//            deck.push(new BonusCard(300));
+//        for(int i = 0; i < BonusCard.Count400; i++)
+//            deck.push(new BonusCard(400));
+//        for(int i = 0; i < BonusCard.Count500; i++)
+//            deck.push(new BonusCard(500));
+//        for(int i = 0; i < BonusCard.Count600; i++)
+//            deck.push(new BonusCard(600));
     }
 }

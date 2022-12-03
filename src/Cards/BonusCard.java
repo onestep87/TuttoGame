@@ -59,7 +59,7 @@ public class BonusCard extends Card {
                 else
                     break;
             }
-            if(!player.askToContinueTurn(points))
+            if(!player.askToContinueTurn(points, game))
                 break;
         }
         return points;

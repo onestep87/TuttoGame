@@ -48,7 +48,7 @@ public class x2Card extends Card {
                 else
                     break;
             }
-            if(!player.askToContinueTurn(points))
+            if(!player.askToContinueTurn(points, game))
                 break;
 
         }

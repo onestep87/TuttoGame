@@ -1,11 +1,14 @@
 package Dice.Combinations;
 
+import Dice.DiceLogic;
 import Dice.Die;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Straight implements Combination{
-    private ArrayList<Die> dice;
+    public ArrayList<Die> dice;
     public Straight(){
         this.dice = new ArrayList<>();
     }
@@ -28,17 +31,45 @@ public class Straight implements Combination{
     }
 
     public boolean tryCombine(ArrayList<Die> thrownDice) throws Exception {
-        //  check if you can combine
         if(thrownDice == null)
             throw new Exception("Dice is null");
-        for (int i = 0; i < thrownDice.size(); i++){
-            for (int j = 0; j < dice.size(); j++){
-                if (thrownDice.get(i).equals(dice.get(j))){
-                    dice.set(j,thrownDice.get(i));
-                }
-            }
+
+        Set<Integer> thrownDicePowers = new HashSet<>();
+        for(Die die : thrownDice)
+            thrownDicePowers.add(die.Power);
+
+        Set<Integer> missingNums = getMissingNumbers();
+
+        // check if can combine
+        ArrayList<Die> diceToAdd = new ArrayList<>();
+        for(int power : thrownDicePowers){
+            if(missingNums.contains(power))
+                diceToAdd.add(new Die(power));
         }
-        return false;
+
+        if(diceToAdd.size() == 0)
+            return false;
+
+        // combine
+        dice.addAll(diceToAdd);
+
+        return true;
+    }
+
+    private Set<Integer> getMissingNumbers(){
+        // get which numbers are missing
+        Set<Integer> dicePowers = new HashSet<>();
+        for(Die die : dice)
+            dicePowers.add(die.Power);
+        Set<Integer> missingPowers = new HashSet<>();
+        for(int power : dicePowers){
+            if(!dicePowers.contains(power + 1))
+                missingPowers.add(power + 1);
+            if(!dicePowers.contains(power - 1))
+                missingPowers.add(power - 1);
+        }
+
+        return missingPowers;
     }
 
     public boolean isStraight(){
