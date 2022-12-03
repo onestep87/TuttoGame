@@ -23,7 +23,7 @@ public class UI {
     public static void ShowPlayersInfo(Game game){
         ArrayList<Player> players = game.getPlayers();
         for (int i=0; i<players.size();i++){
-            System.out.println(players.get(i).Name+""+players.get(i).Score+"");
+            System.out.println("Name: " + players.get(i).Name+" Points: "+players.get(i).Score);
         }
     }
     public static void SayThatGotNull(){
