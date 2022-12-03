@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 public class Game {
     public ArrayList<Player> players=new ArrayList<>();
-    private CardDeck deck;
-    protected int PlayerCount;
+    public CardDeck deck;
+    public int PlayerCount;
     public static int GoalPoints;
     public static int MinPlayerCount = 2;
     public static int MaxPlayerCount = 10;
-    boolean GameIsEnded;
-    boolean cloverLeafHandled;
-    //protected Player CurrentPlayer;
+    public boolean GameIsEnded;
+    boolean forceWin;
 
     public Game(int GoalPoints) {
         PlayerCount=Input.GetPlayerNum();
@@ -30,8 +29,7 @@ public class Game {
                 UI.ShowPlayersInfo(this);
                 System.out.println("===== " + pl.Name + " turn =====");
                 pl.Score += pl.play(deck, this, 0);
-                if(cloverLeafHandled){
-                    System.out.println("You won using Cloverleaf card!");
+                if(forceWin){
                     UI.ShowVictoryScreen(pl);
                     GameIsEnded = true;
                     break;
@@ -71,6 +69,6 @@ public class Game {
     }
 
     public void forceWin(){
-        cloverLeafHandled = true;
+        forceWin = true;
     }
 }

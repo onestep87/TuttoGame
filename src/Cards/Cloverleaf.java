@@ -50,6 +50,7 @@ public class Cloverleaf extends Card {
                 diceCount = DiceLogic.initialCount;
             }
             if(tuttoCount == 2){
+                System.out.println("You won using Cloverleaf card!");
                 game.forceWin();
                 break;
             }
