@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Player {
     public int Score = 0;
     public String Name;
-    public Player( ){
+    public Player(){
         Name = Input.GetPlayerName();
     }
     public Player(String Name){ //for unit testing
@@ -21,8 +21,9 @@ public class Player {
     }
     public int play(CardDeck deck, Game game, int points) throws Exception {
         Card card = deck.takeCard();
+        Input.RollOrPlayerInfo(game);
         UI.showCard(card);
-        //Input.Wait();
+
 
         points = card.Handle(game,this, deck, points);
 
