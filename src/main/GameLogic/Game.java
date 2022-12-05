@@ -3,6 +3,8 @@ package main.GameLogic;
 import main.UserInterface.Input;
 import main.UserInterface.UI;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Game {
     public ArrayList<Player> players=new ArrayList<>();
@@ -10,22 +12,28 @@ public class Game {
     public int PlayerCount;
     public static int GoalPoints;
     public static int MinPlayerCount = 2;
-    public static int MaxPlayerCount = 10;
+    public static int MaxPlayerCount = 4;
     public boolean GameIsEnded;
     boolean forceWin;
 
-    public Game(int GoalPoints) {
+    public Game() {
         PlayerCount=Input.GetPlayerNum();
-        this.GoalPoints = GoalPoints;
+
         deck = new CardDeck();
 
         for (int i =0;i<PlayerCount;i++){
             players.add(new Player());
         }
-    }
-    public Game(int GoalPoints, int PlayerCount) { //For unit testing
-        this.GoalPoints = GoalPoints;
-        deck = new CardDeck();
+
+        Collections.sort(players, new Comparator<Player>(){
+            public int compare(Player o1, Player o2){
+                if(o1.Name == o2.Name)
+                    return 0;
+                return o1.Name.compareTo(o2.Name);
+            }
+        });
+
+        this.GoalPoints = Input.GetGoalPoints();
     }
     public void GameLoop() throws Exception {
         while (!GameIsEnded){

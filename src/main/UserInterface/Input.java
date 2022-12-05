@@ -44,6 +44,26 @@ public class Input {
         }
         return num;
     }
+
+    public static Integer GetGoalPoints(){
+        System.out.println("Enter goal points:");
+        boolean gotNum = false;
+        Integer num=0;
+        while (!gotNum) {
+            try {
+                String Input = input.nextLine();
+                num = Integer.parseInt(Input);
+                if(num < 0)
+                    throw new Exception("Invalid goal points");
+                gotNum=true;
+                return num;
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Try again");
+            }
+        }
+        return num;
+    }
     public static ArrayList<Combination> WhichCombinationsToKeep(ArrayList<Combination> combinations){
         boolean gotPlayerChoice = false;
         System.out.println("Choose which combination to keep:");
@@ -62,12 +82,38 @@ public class Input {
                 System.out.println("Try again");
             }
         }
-        return null;  // TODO notice that player should take at least combination on each throw
+        return null;
+    }
+
+    public static Boolean RollOrPlayerInfo(Game game){
+        System.out.println("Do you want to continue rolling dices? " +
+                "Type R for roll or D to show player info");
+        boolean gotPlayerConfirmationTurn = false;
+        boolean confirmationForNextTurn= false;
+        String name="";
+        while (!gotPlayerConfirmationTurn) {
+            try {
+                name = input.nextLine().toUpperCase();
+                if (name.equals("R")){
+                    gotPlayerConfirmationTurn=true;
+                    return true;
+                }
+                else if (name.equals("D")){
+                    UI.ShowPlayersInfo(game);
+                }
+                else {
+                    throw new Exception();
+                }
+            } catch (Exception ex) {
+                System.out.println("Try again, type R for roll or E D to show player info");
+            }
+        }
+        return confirmationForNextTurn;
     }
 
     public static Boolean AskPlayerToReroll(int points, Game game){
         System.out.println("Do you want to continue rolling dices? " +
-                "Type R for roll, E for escape or D to show player info" +
+                "Type R for roll, E for escape" +
                 "\nYour point for this turn:"+points);
         boolean gotPlayerConfirmationTurn = false;
         boolean confirmationForNextTurn= false;
@@ -82,9 +128,6 @@ public class Input {
                 else if (name.equals("E")){
                     gotPlayerConfirmationTurn=true;
                     return false;
-                }
-                else if (name.equals("D")){
-                    UI.ShowPlayersInfo(game);
                 }
                 else {
                     throw new Exception();
